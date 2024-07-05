@@ -30,8 +30,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: turbostart-pnpm
-        uses: clutchd/turbostart-pnpm@v3.0.0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --prod
       - name: Build
         run: pnpm run build
       - name: Setup Pages
