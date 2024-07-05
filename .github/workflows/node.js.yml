@@ -35,6 +35,8 @@ jobs:
         with:
           # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
           cache: pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.0.0
       - name: Install dependencies
         run: pnpm install --prod
       - name: Build
